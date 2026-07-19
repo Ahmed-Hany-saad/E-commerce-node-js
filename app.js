@@ -12,7 +12,7 @@ app.listen(port, () => {
   console.log(`http://localhost:${port}/`);
 });
 
-mongoose.connect('mongodb+srv://ahhasa842_db_user:7BbWolDOHL6bGA9Y@cluster0.klqnlhj.mongodb.net/?appName=Cluster0').then(() => {
+mongoose.connect('mongodb+srv://ahhasa842_db_user:<db_password>@cluster0.klqnlhj.mongodb.net/?appName=Cluster0').then(() => {
   console.log('Connected to MongoDB');
 }).catch((err) => {
   console.error('Error connecting to MongoDB:', err);
