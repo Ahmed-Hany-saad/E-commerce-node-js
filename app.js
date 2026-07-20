@@ -4,16 +4,17 @@ const port = 2000;
 const mongoose = require("mongoose");
 const alldataa = require("./models/scima");
 
+
 app.use(express.json());////////
 app.use(express.urlencoded({ extended: true }));
-
+app.set("view engine", "ejs");
 app.get("/", (req, res) => {
-  res.sendFile("./view/index.html", { root: __dirname });
+  res.sendFile("./view/index.ejs", { root: __dirname });
 });
 
 mongoose
   .connect(
-    "mongodb+srv://ahhasa842_db_user:7BbWolDOHL6bGA9Y@cluster0.klqnlhj.mongodb.net/all-data?appName=Cluster0",
+    "mongodb+srv://ahhasa842_db_user:enmZzQGjxV8Amg@cluster0.klqnlhj.mongodb.net/all-data?appName=Cluster0",
   )
   .then(() => {
     app.listen(port, () => {
