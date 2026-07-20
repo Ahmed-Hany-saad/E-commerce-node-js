@@ -9,7 +9,13 @@ app.use(express.json());////////
 app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.get("/", (req, res) => {
-  res.sendFile("./view/index.ejs", { root: __dirname });
+  alldataa.find().then((data) => {
+    res.render("index", { data: data });
+  }).catch((err) => {
+    console.error("Error fetching data:", err);
+    res.status(500).send("Internal Server Error");
+  }
+    )
 });
 
 mongoose
