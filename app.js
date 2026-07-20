@@ -33,13 +33,19 @@ liveReloadServer.server.once("connection", () => {
 
 
 app.get("/", (req, res) => {
-  alldataa.find().then((data) => {
-    res.render("index", { data: data });
-  }).catch((err) => {
-    console.error("Error fetching data:", err);
-    res.status(500).send("Internal Server Error");
-  }
-    )
+ res.render("index");
+});
+
+app.get("/user/add.html", (req, res) => {
+ res.render("user/add");
+});
+
+app.get("/user/edit.html", (req, res) => {
+ res.render("user/edit");
+});
+
+app.get("/user/view.html", (req, res) => {
+ res.render("user/view");
 });
 
 mongoose
@@ -55,15 +61,15 @@ mongoose
     console.error("Error connecting to MongoDB:", err);
   });
 
-app.post("/add", async (req, res) => {
-  const newData = new alldataa(req.body);
-  newData.save().then(() => {
-    res.redirect("/");
-      console.log(req.body);
-  }
-).catch((err) => {
-console.error("Error saving data:", err);
-}
-)
-}
-);
+// app.post("/add", async (req, res) => {
+//   const newData = new alldataa(req.body);
+//   newData.save().then(() => {
+//     res.redirect("/");
+//       console.log(req.body);
+//   }
+// ).catch((err) => {
+// console.error("Error saving data:", err);
+// }
+// )
+// }
+// );
